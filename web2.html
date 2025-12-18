@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cerita Kita - Toko Buku Novel Modern</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        /* Font Import - Tipografi Sans-Serif Modern */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        /* Custom Styles untuk Animasi Smooth */
+        .smooth-transition {
+            transition: all 0.3s ease;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            filter: brightness(1.05);
+        }
+        
+        .search-focus:focus {
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+        
+        /* Gradient Background untuk Hero Section */
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+        
+        /* Additional gradients */
+        .card-gradient {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .footer-gradient {
+            background: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-['Inter'] bg-slate-50 text-slate-800">
+    
+    <!-- HEADER & NAVIGATION - Bagian navigasi utama website -->
+  <header class="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 shadow-lg sticky top-0 z-50">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16"><!-- Logo & Nama Toko -->
+     <div class="flex items-center space-x-3">
+      <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center"><span class="text-white font-bold text-sm">📚</span>
+      </div>
+      <h1 id="store-name" class="text-xl font-semibold text-white">Cerita Kita</h1>
+     
+    </div><!-- Menu Navigasi Desktop -->
+     <nav class="hidden md:flex space-x-8"><a href="#" class="text-white hover:text-yellow-300 smooth-transition font-medium">Beranda</a> <a href="#katalog" class="text-white hover:text-yellow-300 smooth-transition font-medium">Katalog</a> <a href="#" class="text-white hover:text-yellow-300 smooth-transition font-medium">Genre</a> <a href="#" class="text-white hover:text-yellow-300 smooth-transition font-medium">Tentang</a>
+
+    <!-- Keranjang & Menu Mobile -->
+    <div class="flex items-center space-x-4">
+      <button id="cart-button" class="relative p-2 text-white hover:text-yellow-300 smooth-transition">
+        <span class="text-xl">🛒</span>
+        <!-- Badge jumlah keranjang -->
+        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full px-1">0</span>
+      </button>
+    </div>
+  </header>
+  
+  <!-- HERO SECTION - Bagian utama dengan tagline dan CTA -->
+  <section class="hero-gradient py-16 lg:py-24">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+     <h2 id="hero-title" class="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">Temukan Cerita Terbaikmu</h2>
+     <p id="hero-subtitle" class="text-xl text-white mb-8 max-w-2xl mx-auto drop-shadow-md">Koleksi novel terlengkap untuk generasi digital. Dari romance hingga thriller, semua ada di sini.</p><button id="cta-button" class="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 hover:from-yellow-500 hover:via-orange-600 hover:to-pink-600 text-white px-8 py-4 rounded-xl font-semibold text-lg smooth-transition shadow-lg hover:shadow-xl transform hover:scale-105"> Jelajahi Koleksi </button>
+    </div>
+   </div>
+  </section>
+  
+  <!-- SEARCH & FILTER SECTION - Bagian pencarian dan filter -->
+  <section class="bg-white py-8 border-b border-slate-200">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row gap-4 items-center justify-between"><!-- Search Bar -->
+     <div class="relative flex-1 max-w-md"><input type="text" id="search-input" placeholder="Cari judul, penulis, atau genre..." class="w-full pl-12 pr-4 py-3 border border-slate-300 rounded-xl focus:outline-none search-focus smooth-transition"> <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 text-xl">🔍</span>
+     </div><!-- Filter Buttons -->
+     <div class="flex flex-wrap gap-3"><button class="filter-btn active px-4 py-2 rounded-lg font-medium smooth-transition bg-gradient-to-r from-purple-500 to-pink-500 text-white" data-genre="semua"> Semua </button> <button class="filter-btn px-4 py-2 rounded-lg font-medium smooth-transition bg-gradient-to-r from-blue-100 to-purple-100 text-purple-700 hover:from-blue-200 hover:to-purple-200" data-genre="romance"> Romance </button> <button class="filter-btn px-4 py-2 rounded-lg font-medium smooth-transition bg-gradient-to-r from-green-100 to-teal-100 text-teal-700 hover:from-green-200 hover:to-teal-200" data-genre="thriller"> Thriller </button> <button class="filter-btn px-4 py-2 rounded-lg font-medium smooth-transition bg-gradient-to-r from-pink-100 to-rose-100 text-rose-700 hover:from-pink-200 hover:to-rose-200" data-genre="fantasy"> Fantasy </button> <button class="filter-btn px-4 py-2 rounded-lg font-medium smooth-transition bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-700 hover:from-orange-200 hover:to-yellow-200" data-genre="drama"> Drama </button>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <section id="promo" class="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 text-white py-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+    <h3 class="text-2xl font-bold">Promo Spesial Hari Ini 🎉</h3>
+    <div class="text-lg">
+      Berakhir dalam: <span id="promo-timer" class="font-mono font-bold">00:00:00</span>
+    </div>
+  </div>
+  </section>
+
+
+  <!-- KATALOG BUKU -->
+  <section id="katalog" class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h3 class="text-3xl font-bold text-slate-800 mb-8 text-center">Koleksi Terbaru</h3>
+      <div id="book-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+    
+    <!-- Book Card Template akan di-generate oleh JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- KERANJANG -->
+  <section id="keranjang" class="fixed top-0 right-0 w-96 h-full bg-white shadow-2xl z-50 hidden flex flex-col">
+  <!-- Header -->
+  <div class="flex justify-between items-center p-4 border-b">
+    <h3 class="text-xl font-bold">Keranjang Belanja</h3>
+    <button onclick="document.getElementById('keranjang').classList.add('hidden')" 
+            class="text-slate-500 hover:text-red-500 text-2xl font-bold">×</button>
+  </div>
+
+  <!-- Daftar item -->
+  <ul id="cart-list" class="flex-1 overflow-y-auto p-4 space-y-4"></ul>
+
+  <!-- Ringkasan -->
+  <div class="p-4 border-t">
+    <div class="flex justify-between mb-4">
+      <span class="font-semibold">Total:</span>
+      <span id="cart-total" class="font-bold text-pink-600">Rp 0</span>
+    </div>
+    <button class="w-full bg-gradient-to-r from-pink-500 to-orange-500 text-white py-3 rounded-lg font-semibold">
+      Checkout
+    </button>
+  </div>
+  </section>
+
+
+  <!-- FOOTER - Bagian footer website -->
+  <footer class="footer-gradient text-white py-12 mt-16">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+     <div>
+      <div class="flex items-center space-x-3 mb-4">
+       <div class="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center"><span class="text-white font-bold text-sm">📚</span>
+       </div>
+       <h4 class="text-xl font-semibold">Cerita Kita</h4>
+      </div>
+      <p class="text-slate-300">Platform terpercaya untuk menemukan novel terbaik. Baca, koleksi, dan nikmati cerita yang mengispirasi.</p>
+     </div>
+     <div>
+      <h5 class="font-semibold mb-4">Kategori</h5>
+      <ul class="space-y-2 text-slate-300">
+       <li><a href="#" class="hover:text-yellow-300 smooth-transition">Romance</a></li>
+       <li><a href="#" class="hover:text-yellow-300 smooth-transition">Thriller</a></li>
+       <li><a href="#" class="hover:text-yellow-300 smooth-transition">Fantasy</a></li>
+       <li><a href="#" class="hover:text-yellow-300 smooth-transition">Drama</a></li>
+      </ul>
+     </div>
+     <div>
+      <h5 class="font-semibold mb-4">Kontak</h5>
+      <ul class="space-y-2 text-slate-300">
+       <li>📧 hello@ceritakita.com</li>
+       <li>📱 +62 858-8998-7667</li>
+       <li>📍 Lamongan, Indonesia</li>
+      </ul>
+     </div>
+    </div>
+    <div class="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">
+     <p>© 2025 Cerita Kita. Semua hak dilindungi.</p>
+    </div>
+   </div>
+  </footer>
+
+  <script>
+        // DATA BUKU - Database sederhana untuk prototype (2 buku per genre)
+        const booksData = [
+            // ROMANCE - 2 buku
+            {
+                id: 1,
+                title: "Hujan Bulan Juni",
+                author: "Sapardi Djoko Damono",
+                genre: "romance",
+                price: "Rp 85.000",
+                rating: 4.8,
+                cover: "hujan.png"
+            },
+            {
+                id: 2,
+                title: "Dilan 1990",
+                author: "Pidi Baiq",
+                genre: "romance",
+                price: "Rp 75.000",
+                rating: 4.7,
+                cover: "dilan.webp"
+            },
+            // THRILLER - 2 buku
+            {
+                id: 3,
+                title: "Secret High School",
+                author: "Queena",
+                genre: "thriller",
+                price: "Rp 89.000",
+                rating: 4.6,
+                cover: "secret.png"
+            },
+            {
+                id: 4,
+                title: "Prahara Jiwa",
+                author: "Umar Santoso",
+                genre: "thriller",
+                price: "Rp 78.000",
+                rating: 4.4,
+                cover: "prahara.png"
+            },
+            // FANTASY - 2 buku
+            {
+                id: 5,
+                title: "Supernova",
+                author: "Dee Lestari",
+                genre: "fantasy",
+                price: "Rp 100.000",
+                rating: 4.6,
+                cover: "super.png"
+            },
+            {
+                id: 6,
+                title: "Percy Jackson",
+                author: "Rick Riordan",
+                genre: "fantasy",
+                price: "Rp 95.000",
+                rating: 4.8,
+                cover: "percy.png"
+            },
+            // DRAMA - 2 buku
+            {
+                id: 7,
+                title: "Laskar Pelangi",
+                author: "Andrea Hirata",
+                genre: "drama",
+                price: "Rp 95.000",
+                rating: 4.9,
+                cover: "laskar.png"
+            },
+            {
+                id: 8,
+                title: "Negeri 5 Menara",
+                author: "Ahmad Fuadi",
+                genre: "drama",
+                price: "Rp 90.000",
+                rating: 4.8,
+                cover: "negeri.jpg"
+            }
+        ];
+
+        let currentFilter = 'semua';
+        let currentBooks = [...booksData];
+
+        let cartCount = 0;
+        let cartItems = [];
+
+        // Fungsi update keranjang
+        function updateCart() {
+        document.getElementById('cart-count').textContent = cartCount;
+
+        const cartList = document.getElementById('cart-list');
+        cartList.innerHTML = '';
+
+        let total = 0;
+
+        cartItems.forEach((item, index) => {
+          // ambil angka harga (misalnya "Rp 85.000" → 85000)
+          const price = parseInt(item.price.replace(/\D/g, ''));
+          total += price;
+
+          const li = document.createElement('li');
+          li.className = 'flex items-center justify-between bg-slate-50 p-3 rounded-lg shadow-sm';
+
+          li.innerHTML = `
+            <div class="flex items-center gap-3">
+              <img src="${item.cover}" alt="${item.title}" class="w-12 h-16 object-cover rounded">
+              <div>
+                <p class="font-semibold">${item.title}</p>
+                <p class="text-sm text-slate-600">${item.price}</p>
+              </div>
+            </div>
+            <button class="remove-btn text-red-500 hover:text-red-700 font-bold">×</button>
+          `;
+
+          // tombol hapus
+          li.querySelector('.remove-btn').addEventListener('click', function() {
+            cartItems.splice(index, 1);
+            cartCount--;
+            updateCart();
+          });
+
+          cartList.appendChild(li);
+        });
+
+        // update total
+        document.getElementById('cart-total').textContent = `Rp ${total.toLocaleString('id-ID')}`;
+      }
+
+        function renderBooks(books) {
+            const bookGrid = document.getElementById('book-grid');
+            bookGrid.innerHTML = '';
+
+            books.forEach(book => {
+                const bookCard = document.createElement('div');
+                bookCard.className = 'book-card bg-white rounded-2xl shadow-lg overflow-hidden smooth-transition cursor-pointer';
+                
+                bookCard.innerHTML = `
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img src="${book.cover}" alt="${book.title}" class="w-full h-full object-cover smooth-transition hover:scale-105"
+                            onerror="this.src=''; this.alt='Cover tidak tersedia'; this.style.display='none';">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-semibold text-lg text-slate-800 mb-2 line-clamp-2">${book.title}</h4>
+                        <p class="text-slate-600 mb-3">${book.author}</p>
+                        <div class="flex items-center mb-3">
+                            <span class="text-yellow-400 mr-1">⭐</span>
+                            <span class="text-sm text-slate-600">${book.rating}</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">${book.price}</span>
+                            <button class="buy-btn bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white px-4 py-2 rounded-lg font-medium smooth-transition shadow-md hover:shadow-lg">
+                                Beli
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                // Event listener tombol Beli 
+                bookCard.querySelector('.buy-btn').addEventListener('click', function() {
+                    cartCount++;
+                    cartItems.push(book); // simpan buku ke array
+                    updateCart();
+                });
+
+                bookGrid.appendChild(bookCard);
+            });
+        }
+
+        // FUNGSI FILTER - Memfilter buku berdasarkan genre
+        function filterBooks(genre) {
+            currentFilter = genre;
+            
+            if (genre === 'semua') {
+                currentBooks = [...booksData];
+            } else {
+                currentBooks = booksData.filter(book => book.genre === genre);
+            }
+            
+            renderBooks(currentBooks);
+            
+            // Update tampilan tombol filter
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-genre') === 'semua') {
+                    btn.className = 'filter-btn px-4 py-2 rounded-lg font-medium smooth-transition bg-gradient-to-r from-blue-100 to-purple-100 text-purple-700 hover:from-blue-200 hover:to-purple-200';
+                } else if (btn.getAttribute('data-genre') === 'romance') {
+                    btn.className = 'filter-btn px-4 py-2 rounded-lg font-medium smooth-transition bg-gradient-to-r from-blue-100 to-purple-100 text-purple-700 hover:from-blue-200 hover:to-purple-200';
+                } else if (btn.getAttribute('data-genre') === 'thriller') {
+                    btn.className = 'filter-btn px-4 py-2 rounded-lg font-medium smooth-transition bg-gradient-to-r from-green-100 to-teal-100 text-teal-700 hover:from-green-200 hover:to-teal-200';
+                } else if (btn.getAttribute('data-genre') === 'fantasy') {
+                    btn.className = 'filter-btn px-4 py-2 rounded-lg font-medium smooth-transition bg-gradient-to-r from-pink-100 to-rose-100 text-rose-700 hover:from-pink-200 hover:to-rose-200';
+                } else if (btn.getAttribute('data-genre') === 'drama') {
+                    btn.className = 'filter-btn px-4 py-2 rounded-lg font-medium smooth-transition bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-700 hover:from-orange-200 hover:to-yellow-200';
+                }
+            });
+            
+            const activeBtn = document.querySelector(`[data-genre="${genre}"]`);
+            activeBtn.classList.add('active');
+            activeBtn.className = 'filter-btn active px-4 py-2 rounded-lg font-medium smooth-transition bg-gradient-to-r from-purple-500 to-pink-500 text-white';
+        }
+
+        // FUNGSI PENCARIAN - Mencari buku berdasarkan judul atau penulis
+        function searchBooks(query) {
+            const filteredBooks = booksData.filter(book => {
+                const matchesSearch = book.title.toLowerCase().includes(query.toLowerCase()) ||
+                                    book.author.toLowerCase().includes(query.toLowerCase()) ||
+                                    book.genre.toLowerCase().includes(query.toLowerCase());
+                
+                const matchesFilter = currentFilter === 'semua' || book.genre === currentFilter;
+                
+                return matchesSearch && matchesFilter;
+            });
+            
+            renderBooks(filteredBooks);
+        }
+
+        // EVENT LISTENERS - Menangani interaksi pengguna
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render buku awal
+            renderBooks(currentBooks);
+            
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const genre = this.getAttribute('data-genre');
+                    filterBooks(genre);
+                });
+            });
+
+            // Toggle keranjang saat ikon 🛒 diklik
+            document.getElementById('cart-button').addEventListener('click', function() {
+              const cartSection = document.getElementById('keranjang');
+              cartSection.classList.toggle('hidden');
+              updateCart();
+            });
+
+            // Search functionality
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', function() {
+                searchBooks(this.value);
+            });
+            
+            // CTA Button scroll to catalog
+            document.getElementById('cta-button').addEventListener('click', function() {
+                document.getElementById('katalog').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            });
+        });
+
+        // ELEMENT SDK CONFIGURATION - Konfigurasi untuk editing
+        const defaultConfig = {
+            store_name: "Cerita Kita",
+            hero_title: "Temukan Cerita Terbaikmu",
+            hero_subtitle: "Koleksi novel terlengkap untuk generasi digital. Dari romance hingga thriller, semua ada di sini.",
+            cta_button: "Jelajahi Koleksi"
+        };
+
+        async function onConfigChange(config) {
+            // Update store name
+            const storeName = config.store_name || defaultConfig.store_name;
+            document.getElementById('store-name').textContent = storeName;
+            
+            // Update hero section
+            const heroTitle = config.hero_title || defaultConfig.hero_title;
+            document.getElementById('hero-title').textContent = heroTitle;
+            
+            const heroSubtitle = config.hero_subtitle || defaultConfig.hero_subtitle;
+            document.getElementById('hero-subtitle').textContent = heroSubtitle;
+            
+            const ctaButton = config.cta_button || defaultConfig.cta_button;
+            document.getElementById('cta-button').textContent = ctaButton;
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["store_name", config.store_name || defaultConfig.store_name],
+                ["hero_title", config.hero_title || defaultConfig.hero_title],
+                ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+                ["cta_button", config.cta_button || defaultConfig.cta_button]
+            ]);
+        }
+
+        // Initialize Element SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        // Tentukan waktu berakhir promo 
+        const promoEnd = new Date();
+        promoEnd.setHours(23, 59, 59, 999);
+
+        function updatePromoTimer() {
+          const now = new Date().getTime();
+          const distance = promoEnd - now;
+
+          if (distance < 0) {
+            document.getElementById('promo-timer').textContent = "Promo berakhir!";
+            clearInterval(promoInterval);
+            return;
+          }
+
+          const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+          const minutes = Math.floor((distance / (1000 * 60)) % 60);
+          const seconds = Math.floor((distance / 1000) % 60);
+
+          document.getElementById('promo-timer').textContent =
+            `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+        }
+
+        // Update setiap detik
+        const promoInterval = setInterval(updatePromoTimer, 1000);
+        updatePromoTimer();
+
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99fe6e81d485fdeb',t:'MTc2MzM3NDE1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
