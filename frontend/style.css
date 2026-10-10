@@ -1,0 +1,35 @@
+/* Font Import - Tipografi Sans-Serif Modern */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+    box-sizing: border-box;
+}
+
+/* Custom Styles untuk Animasi Smooth */
+.smooth-transition {
+    transition: all 0.3s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    filter: brightness(1.05);
+}
+
+.search-focus:focus {
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+/* Gradient Background untuk Hero Section */
+.hero-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+}
+
+/* Additional gradients */
+.card-gradient {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.footer-gradient {
+    background: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);
+}

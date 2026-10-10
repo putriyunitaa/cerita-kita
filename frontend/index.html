@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cerita Kita - Toko Buku Novel Modern</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-['Inter'] bg-slate-50 text-slate-800">
+    
+    <!-- HEADER & NAVIGATION -->
+  <header class="bg-white border-b border-slate-100 sticky top-0 z-50">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap md:flex-nowrap justify-between items-center py-4 gap-4">
+     
+     <!-- Logo -->
+     <div class="flex items-center space-x-2 md:space-x-3 order-1">
+      <div class="w-8 h-8 md:w-10 md:h-10 bg-purple-600 rounded-xl flex items-center justify-center shadow-sm">
+        <span class="text-white text-base md:text-lg">📖</span>
+      </div>
+      <h1 id="store-name" class="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">cerita kita</h1>
+     </div>
+     
+     <!-- Search Bar (Center on desktop, full width on mobile) -->
+     <div class="w-full md:w-auto md:flex-1 max-w-2xl md:mx-12 relative order-3 md:order-2">
+       <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400">🔍</span>
+       <input type="text" id="search-input" placeholder="Cari judul, penulis, atau cerita favoritmu" class="w-full pl-12 pr-12 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 smooth-transition text-sm text-slate-700">
+       <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 text-xs font-semibold">⌘ K</span>
+     </div>
+
+     <!-- Right Actions -->
+     <div class="flex items-center space-x-4 md:space-x-6 order-2 md:order-3">
+       <!-- Cart -->
+       <button id="cart-button" class="relative text-slate-600 hover:text-purple-600 smooth-transition flex items-center">
+         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+         </svg>
+         <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center border-2 border-white">2</span>
+       </button>
+       <!-- Auth -->
+       <button id="nav-auth-btn" onclick="openAuthModal()" class="text-purple-600 font-semibold text-sm md:text-base hover:text-purple-700 smooth-transition">Masuk</button>
+     </div>
+     
+    </div>
+   </div>
+  </header>
+  
+  <!-- HERO SECTION -->
+  <section class="py-4 md:py-8">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-gradient-to-br from-[#f8f0ff] to-[#fff0f5] rounded-3xl overflow-hidden flex flex-col md:flex-row items-center relative">
+     
+     <!-- Left Text -->
+     <div class="w-full md:w-1/2 p-8 md:p-12 lg:p-16 z-10">
+      <div class="inline-flex items-center space-x-2 text-purple-600 font-bold text-[10px] md:text-xs tracking-wider mb-4 md:mb-6">
+        <span>✨</span>
+        <span class="uppercase">Untuk setiap bab dalam hidupmu</span>
+      </div>
+      <h2 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-4 md:mb-6 leading-[1.1] tracking-tight">Temukan Cerita<br>Terbaikmu</h2>
+      <p id="hero-subtitle" class="text-slate-600 text-sm md:text-lg mb-8 md:mb-10 max-w-md leading-relaxed">Dari kisah yang menghangatkan hati hingga dunia yang belum pernah kamu jelajahi. Buku berikutnya menunggumu di sini.</p>
+      <button id="cta-button" class="bg-[#d946ef] hover:bg-[#c026d3] text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-sm smooth-transition shadow-lg shadow-purple-500/30 flex items-center justify-center md:justify-start space-x-2 transform hover:-translate-y-0.5 w-full md:w-auto"> 
+        <span>Jelajahi Koleksi</span>
+        <span>→</span>
+      </button>
+     </div>
+     
+     <!-- Right Image -->
+     <div class="w-full md:w-1/2 h-64 md:h-full md:min-h-[400px] relative">
+       <!-- Menggunakan placeholder untuk ilustrasi buku -->
+       <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80" alt="Ilustrasi Buku" class="absolute inset-0 w-full h-full object-cover rounded-b-3xl md:rounded-b-none md:rounded-r-3xl">
+       
+       <!-- Floating badge -->
+       <div class="hidden md:flex absolute bottom-8 right-12 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-xl items-center space-x-2">
+         <span class="text-pink-500">🤍</span>
+         <span class="text-slate-800 text-sm font-medium">Satu buku, seribu rasa.</span>
+       </div>
+     </div>
+     
+    </div>
+   </div>
+  </section>
+  
+  <!-- SEARCH & FILTER SECTION -->
+  <section id="genre-section" class="pt-12 pb-6">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-6 md:mb-8">
+      <div>
+        <h3 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mb-1 md:mb-2">Cerita pilihan untukmu</h3>
+        <p class="text-slate-500 text-sm md:text-base">Pilih buku yang paling dekat dengan hatimu.</p>
+      </div>
+      <div class="text-slate-400 text-xs md:text-sm mt-2 lg:mt-0 font-medium">
+        8 buku pilihan • Dikurasi dengan hati
+      </div>
+    </div>
+    
+    <!-- Filter Buttons -->
+    <div class="flex flex-nowrap md:flex-wrap gap-2 md:gap-3 overflow-x-auto pb-4 md:pb-0 hide-scrollbar" style="scrollbar-width: none;">
+      <button class="filter-btn active whitespace-nowrap px-4 md:px-6 py-1.5 md:py-2.5 rounded-full font-semibold text-xs md:text-sm smooth-transition bg-[#a855f7] text-white shadow-md shadow-purple-500/20 border border-transparent" data-genre="semua">Semua</button>
+      <button class="filter-btn whitespace-nowrap px-4 md:px-6 py-1.5 md:py-2.5 rounded-full font-semibold text-xs md:text-sm smooth-transition bg-white text-slate-600 border border-slate-200 hover:border-purple-300 hover:text-purple-600" data-genre="romance">Romance</button>
+      <button class="filter-btn whitespace-nowrap px-4 md:px-6 py-1.5 md:py-2.5 rounded-full font-semibold text-xs md:text-sm smooth-transition bg-white text-slate-600 border border-slate-200 hover:border-purple-300 hover:text-purple-600" data-genre="thriller">Thriller</button>
+      <button class="filter-btn whitespace-nowrap px-4 md:px-6 py-1.5 md:py-2.5 rounded-full font-semibold text-xs md:text-sm smooth-transition bg-white text-slate-600 border border-slate-200 hover:border-purple-300 hover:text-purple-600" data-genre="fantasy">Fantasy</button>
+      <button class="filter-btn whitespace-nowrap px-4 md:px-6 py-1.5 md:py-2.5 rounded-full font-semibold text-xs md:text-sm smooth-transition bg-white text-slate-600 border border-slate-200 hover:border-purple-300 hover:text-purple-600" data-genre="drama">Drama</button>
+    </div>
+   </div>
+  </section>
+
+  <section id="promo" class="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 text-white py-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+    <h3 class="text-2xl font-bold">Promo Spesial Hari Ini 🎉</h3>
+    <div class="text-lg">
+      Berakhir dalam: <span id="promo-timer" class="font-mono font-bold">00:00:00</span>
+    </div>
+  </div>
+  </section>
+
+
+  <!-- KATALOG BUKU -->
+  <section id="katalog" class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h3 class="text-3xl font-bold text-slate-800 mb-8 text-center hidden md:block">Koleksi Terbaru</h3>
+      <div id="book-grid" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-8">
+    
+    <!-- Book Card Template akan di-generate oleh JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- KERANJANG -->
+  <div id="keranjang" class="fixed inset-0 z-[150] hidden">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="document.getElementById('keranjang').classList.add('hidden')"></div>
+    
+    <!-- Side Panel -->
+    <div class="absolute top-0 right-0 w-full sm:w-[460px] h-full bg-white shadow-2xl flex flex-col transform transition-transform duration-300">
+      
+      <!-- Header -->
+      <div class="p-6 md:p-8 flex justify-between items-start bg-white z-10 pb-4">
+        <div>
+          <h3 class="text-2xl font-bold text-slate-900 tracking-tight">Keranjang Saya</h3>
+          <p id="cart-subtitle" class="text-slate-500 text-sm mt-2">0 buku untuk cerita barumu</p>
+        </div>
+        <button onclick="document.getElementById('keranjang').classList.add('hidden')" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center font-bold text-lg smooth-transition">&times;</button>
+      </div>
+
+      <!-- Daftar item -->
+      <ul id="cart-list" class="flex-1 overflow-y-auto px-6 md:px-8 space-y-2 pb-4 hide-scrollbar"></ul>
+
+      <!-- Ringkasan -->
+      <div class="p-6 md:p-8 border-t border-slate-100 bg-white">
+        
+        <!-- Promo -->
+        <div class="mb-6">
+          <p class="text-xs font-bold text-slate-800 mb-2 uppercase tracking-wide">Masukkan Kode Promo</p>
+          <div class="flex gap-2">
+            <input type="text" id="promo-code-input" placeholder="CERITAKITA20" class="flex-1 bg-purple-50 border border-purple-100 text-purple-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 font-medium placeholder-purple-300">
+            <button onclick="applyPromo()" class="border border-purple-200 text-purple-600 px-6 py-3 rounded-xl text-sm font-bold hover:bg-purple-50 smooth-transition">Terapkan</button>
+          </div>
+          <p id="promo-message" class="text-xs font-medium text-emerald-600 mt-2 hidden flex items-center">
+            <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span id="promo-message-text">Promo aktif! Kamu hemat 20%.</span>
+          </p>
+        </div>
+        
+        <!-- Summary Box -->
+        <div class="bg-slate-50 rounded-2xl p-5 mb-6 border border-slate-100">
+          <div class="flex justify-between mb-3 text-sm">
+            <span class="text-slate-500 font-medium">Subtotal</span>
+            <span id="cart-subtotal" class="font-bold text-slate-800">Rp0</span>
+          </div>
+          <div id="discount-row" class="flex justify-between mb-4 text-sm hidden border-b border-slate-200 pb-4">
+            <span class="text-pink-500 font-medium" id="cart-discount-label">Diskon</span>
+            <span id="cart-discount-amount" class="font-bold text-pink-500">-Rp0</span>
+          </div>
+          <div class="flex justify-between items-center pt-2">
+            <span class="font-bold text-slate-800">Total</span>
+            <span id="cart-total" class="font-extrabold text-slate-900 text-2xl tracking-tight">Rp0</span>
+          </div>
+        </div>
+        
+        <!-- Checkout Button -->
+        <button id="checkout-btn" class="w-full bg-[#10b981] hover:bg-[#059669] text-white py-4 rounded-xl font-bold text-base smooth-transition shadow-lg shadow-emerald-500/30 hover:shadow-xl flex items-center justify-center space-x-2">
+          <span>Checkout</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </button>
+        <p class="text-center text-[11px] text-slate-400 mt-3 mb-5">Ongkir dihitung saat checkout.</p>
+        
+        <!-- Bottom tip -->
+        <div class="bg-purple-50 rounded-xl p-3.5 flex items-center justify-center space-x-2 text-purple-600 text-xs font-medium">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+          <span>Cerita yang baik layak dibawa pulang.</span>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ADMIN DASHBOARD FULL PAGE OVERLAY -->
+  <div id="admin-modal" class="fixed inset-0 z-[150] hidden bg-slate-50 flex h-screen overflow-hidden">
+    
+    <!-- Sidebar -->
+    <div class="w-[260px] bg-[#1e1b4b] flex flex-col flex-shrink-0 text-slate-300">
+        <!-- Logo -->
+        <div class="p-6 pb-8 flex items-center space-x-3">
+          <div class="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center shadow-sm">
+            <span class="text-white text-xs">📖</span>
+          </div>
+          <h1 class="text-xl font-bold tracking-tight text-white">cerita kita</h1>
+        </div>
+        
+        <div class="px-6 mb-4">
+            <p class="text-[10px] font-bold text-slate-500 tracking-widest uppercase">Ruang Pengelola</p>
+        </div>
+        
+        <!-- Menu -->
+        <div class="flex-1 px-4 space-y-2">
+            <button onclick="switchAdminTab('stats')" id="admin-tab-stats" class="w-full flex items-center space-x-3 px-4 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-xl smooth-transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                <span>Statistik</span>
+            </button>
+            <button onclick="switchAdminTab('books')" id="admin-tab-books" class="w-full flex items-center space-x-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800 font-medium rounded-xl smooth-transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                <span>Kelola Buku</span>
+            </button>
+            <button onclick="switchAdminTab('orders')" id="admin-tab-orders" class="w-full flex items-center space-x-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800 font-medium rounded-xl smooth-transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                <span>Pesanan Masuk</span>
+            </button>
+        </div>
+        
+        <!-- Bottom Actions -->
+        <div class="px-4 mb-4">
+            <button onclick="closeAdminModal()" class="w-full flex items-center space-x-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800 font-medium rounded-xl smooth-transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                <span class="text-sm">Lihat toko</span>
+            </button>
+        </div>
+        
+        <!-- User Badge -->
+        <div class="p-4 m-4 mt-0 bg-slate-800/50 rounded-2xl border border-slate-700/50 flex flex-col">
+            <div class="flex items-center space-x-3 mb-3">
+                <div class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">AP</div>
+                <div>
+                    <p class="text-white font-bold text-sm">Aditya Pratama</p>
+                    <p class="text-slate-400 text-[10px]">Administrator</p>
+                </div>
+            </div>
+            <button onclick="logout()" class="text-left text-xs text-slate-400 hover:text-red-400 font-medium smooth-transition">Keluar Akun</button>
+        </div>
+    </div>
+    
+    <!-- Content Area -->
+    <div class="flex-1 overflow-y-auto p-8 relative">
+        <div class="max-w-7xl mx-auto space-y-8 pb-12">
+            
+            <!-- Tab Stats -->
+            <div id="admin-content-stats" class="space-y-6">
+                <!-- Header -->
+                <div class="flex justify-between items-end">
+                    <div>
+                        <p class="text-[11px] text-slate-400 mb-2">Admin / Statistik</p>
+                        <h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-1">Statistik toko</h2>
+                        <p class="text-sm text-slate-500">Lihat bagaimana cerita-cerita kita tumbuh minggu ini.</p>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-white px-4 py-2 border border-slate-200 rounded-xl shadow-sm text-sm text-slate-600 font-medium cursor-default">
+                        <svg class="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span>10 Oktober 2026</span>
+                    </div>
+                </div>
+                
+                <!-- Cards Row -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <!-- Revenue Card -->
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden flex flex-col justify-between h-40 hover:shadow-md smooth-transition">
+                        <div class="flex justify-between items-start">
+                            <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Total Pendapatan</p>
+                            <div class="w-8 h-8 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg></div>
+                        </div>
+                        <div>
+                            <p id="admin-stat-revenue" class="text-3xl font-black text-slate-900 tracking-tight mb-1">Rp0</p>
+                            <p class="text-[10px] font-bold text-emerald-500">&uarr; 18,4% dari minggu lalu</p>
+                        </div>
+                    </div>
+                    <!-- Orders Card -->
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden flex flex-col justify-between h-40 hover:shadow-md smooth-transition">
+                        <div class="flex justify-between items-start">
+                            <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Jumlah Pesanan</p>
+                            <div class="w-8 h-8 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg></div>
+                        </div>
+                        <div>
+                            <p id="admin-stat-orders" class="text-3xl font-black text-slate-900 tracking-tight mb-1">0</p>
+                            <p class="text-[10px] font-bold text-emerald-500">&uarr; 12 pesanan minggu ini</p>
+                        </div>
+                    </div>
+                    <!-- Products Card -->
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden flex flex-col justify-between h-40 hover:shadow-md smooth-transition">
+                        <div class="flex justify-between items-start">
+                            <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Jumlah Produk</p>
+                            <div class="w-8 h-8 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg></div>
+                        </div>
+                        <div>
+                            <p id="admin-stat-books" class="text-3xl font-black text-slate-900 tracking-tight mb-1">0</p>
+                            <p class="text-[10px] font-bold text-emerald-500">Buku tersedia</p>
+                        </div>
+                    </div>
+                    <!-- Users Card -->
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden flex flex-col justify-between h-40 hover:shadow-md smooth-transition">
+                        <div class="flex justify-between items-start">
+                            <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Jumlah Pelanggan</p>
+                            <div class="w-8 h-8 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg></div>
+                        </div>
+                        <div>
+                            <p id="admin-stat-users" class="text-3xl font-black text-slate-900 tracking-tight mb-1">0</p>
+                            <p class="text-[10px] font-bold text-emerald-500">&uarr; 8 pembaca baru</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Middle Charts Row -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Left Chart: Revenue -->
+                    <div class="md:col-span-2 bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                        <div class="flex justify-between items-start mb-8">
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-900">Pendapatan mingguan</h3>
+                                <p class="text-[11px] text-slate-500">04-10 Oktober 2026 • Total Rp18.640.000</p>
+                            </div>
+                            <select class="bg-slate-50 border border-slate-200 text-slate-600 text-xs rounded-lg px-3 py-1.5 outline-none focus:ring-1 focus:ring-purple-400 cursor-pointer">
+                                <option>7 hari terakhir</option>
+                                <option>30 hari terakhir</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Dummy Chart Container -->
+                        <div class="h-48 flex items-end justify-between gap-2 px-2 relative">
+                            <!-- Y Axis marks (dummy) -->
+                            <div class="absolute inset-0 flex flex-col justify-between text-[10px] text-slate-400 pointer-events-none pb-6">
+                                <span>5 jt</span><span>4 jt</span><span>3 jt</span><span>2 jt</span><span>1 jt</span><span>0</span>
+                            </div>
+                            <!-- Bars -->
+                            <div class="flex-1 flex flex-col items-center gap-2 z-10 group">
+                                <span class="text-[10px] text-slate-500 font-bold opacity-0 group-hover:opacity-100 smooth-transition">1,4 jt</span>
+                                <div class="w-full bg-purple-100 rounded-md h-[28%] group-hover:bg-purple-200 smooth-transition"></div>
+                                <span class="text-[10px] text-slate-400">04 Okt</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2 z-10 group">
+                                <span class="text-[10px] text-slate-500 font-bold opacity-0 group-hover:opacity-100 smooth-transition">2,1 jt</span>
+                                <div class="w-full bg-purple-100 rounded-md h-[42%] group-hover:bg-purple-200 smooth-transition"></div>
+                                <span class="text-[10px] text-slate-400">05 Okt</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2 z-10 group">
+                                <span class="text-[10px] text-slate-500 font-bold opacity-0 group-hover:opacity-100 smooth-transition">2,8 jt</span>
+                                <div class="w-full bg-purple-100 rounded-md h-[56%] group-hover:bg-purple-200 smooth-transition"></div>
+                                <span class="text-[10px] text-slate-400">06 Okt</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2 z-10 group">
+                                <span class="text-[10px] text-slate-500 font-bold opacity-0 group-hover:opacity-100 smooth-transition">1,95 jt</span>
+                                <div class="w-full bg-purple-100 rounded-md h-[39%] group-hover:bg-purple-200 smooth-transition"></div>
+                                <span class="text-[10px] text-slate-400">07 Okt</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2 z-10 group">
+                                <span class="text-[10px] text-slate-500 font-bold opacity-0 group-hover:opacity-100 smooth-transition">3,25 jt</span>
+                                <div class="w-full bg-purple-100 rounded-md h-[65%] group-hover:bg-purple-200 smooth-transition"></div>
+                                <span class="text-[10px] text-slate-400">08 Okt</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2 z-10 group">
+                                <span class="text-[10px] text-slate-500 font-bold opacity-0 group-hover:opacity-100 smooth-transition">3,02 jt</span>
+                                <div class="w-full bg-purple-100 rounded-md h-[60%] group-hover:bg-purple-200 smooth-transition"></div>
+                                <span class="text-[10px] text-slate-400">09 Okt</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2 z-10">
+                                <span class="text-[10px] text-purple-600 font-bold">4,12 jt</span>
+                                <div class="w-full bg-gradient-to-t from-pink-500 to-purple-500 rounded-md h-[82%] shadow-lg shadow-purple-500/20"></div>
+                                <span class="text-[10px] text-slate-600 font-bold">10 Okt</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Chart: Status Breakdown -->
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                        <h3 class="font-bold text-lg text-slate-900 mb-1">Perjalanan pesanan</h3>
+                        <p class="text-[11px] text-slate-500 mb-8">148 pesanan • Semua status</p>
+                        
+                        <div class="space-y-5">
+                            <!-- Menunggu -->
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-slate-600 mb-2">
+                                    <span>Menunggu</span><span>28</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-1.5"><div class="bg-yellow-500 h-1.5 rounded-full" style="width: 19%"></div></div>
+                            </div>
+                            <!-- Diproses -->
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-slate-600 mb-2">
+                                    <span>Diproses</span><span>36</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-1.5"><div class="bg-blue-500 h-1.5 rounded-full" style="width: 24%"></div></div>
+                            </div>
+                            <!-- Dikirim -->
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-slate-600 mb-2">
+                                    <span>Dikirim</span><span>24</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-1.5"><div class="bg-emerald-500 h-1.5 rounded-full" style="width: 16%"></div></div>
+                            </div>
+                            <!-- Selesai -->
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-slate-600 mb-2">
+                                    <span>Selesai</span><span>60</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-1.5"><div class="bg-purple-500 h-1.5 rounded-full" style="width: 41%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders Table Mock -->
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                        <h3 class="font-bold text-lg text-slate-900">Pesanan terbaru</h3>
+                        <button onclick="switchAdminTab('orders')" class="text-xs font-bold text-purple-600 hover:text-purple-700">Lihat Pesanan Masuk &rarr;</button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                                    <th class="p-4 pl-6">Pesanan</th>
+                                    <th class="p-4">Pelanggan</th>
+                                    <th class="p-4">Tanggal</th>
+                                    <th class="p-4">Total</th>
+                                    <th class="p-4">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm">
+                                <tr class="border-b border-slate-50 hover:bg-slate-50 smooth-transition">
+                                    <td class="p-4 pl-6 font-bold text-slate-900">#CK-1028</td>
+                                    <td class="p-4 text-slate-600">Nadia Putri</td>
+                                    <td class="p-4 text-slate-500">10 Okt 2026</td>
+                                    <td class="p-4 font-bold text-slate-900">Rp162.200</td>
+                                    <td class="p-4"><span class="bg-[#fef08a] text-[#854d0e] px-3 py-1 rounded-full text-[10px] font-bold">Menunggu</span></td>
+                                </tr>
+                                <tr class="border-b border-slate-50 hover:bg-slate-50 smooth-transition">
+                                    <td class="p-4 pl-6 font-bold text-slate-900">#CK-1021</td>
+                                    <td class="p-4 text-slate-600">Nadia Putri</td>
+                                    <td class="p-4 text-slate-500">08 Okt 2026</td>
+                                    <td class="p-4 font-bold text-slate-900">Rp112.000</td>
+                                    <td class="p-4"><span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold">Diproses</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 smooth-transition">
+                                    <td class="p-4 pl-6 font-bold text-slate-900">#CK-1014</td>
+                                    <td class="p-4 text-slate-600">Nadia Putri</td>
+                                    <td class="p-4 text-slate-500">05 Okt 2026</td>
+                                    <td class="p-4 font-bold text-slate-900">Rp104.000</td>
+                                    <td class="p-4"><span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-bold">Dikirim</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="text-center pt-8 pb-4 text-[10px] text-slate-400">
+                    Cerita Kita &bull; Ruang pengelola toko
+                </div>
+            </div>
+
+            <!-- Tab Books -->
+            <div id="admin-content-books" class="hidden space-y-6">
+                <!-- Header -->
+                <div class="flex justify-between items-end">
+                    <div>
+                        <p class="text-[11px] text-slate-400 mb-2">Admin / Kelola Buku</p>
+                        <h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-1">Kelola koleksi buku</h2>
+                        <p class="text-sm text-slate-500">Atur cerita, harga, dan stok yang tampil di toko.</p>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-white px-4 py-2 border border-slate-200 rounded-xl shadow-sm text-sm text-slate-600 font-medium cursor-default">
+                        <svg class="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span>10 Oktober 2026</span>
+                    </div>
+                </div>
+
+                <!-- Toolbar -->
+                <div class="flex justify-between items-center gap-4">
+                    <div class="flex items-center gap-4 flex-1">
+                        <div class="relative w-full max-w-md">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            </div>
+                            <input type="text" id="admin-books-search" onkeyup="filterAdminBooks()" class="w-full bg-white border border-slate-200 text-slate-600 rounded-xl pl-10 pr-4 py-2.5 outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-300 text-sm smooth-transition" placeholder="Cari judul, penulis, atau ID buku">
+                        </div>
+                        <select id="admin-books-genre" onchange="filterAdminBooks()" class="bg-white border border-slate-200 text-slate-600 text-sm rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-purple-200">
+                            <option value="Semua genre">Semua genre</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Drama">Drama</option>
+                        </select>
+                    </div>
+                    <button class="bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 text-white font-bold py-2.5 px-6 rounded-xl shadow-md smooth-transition flex items-center space-x-2" onclick="alert('Formulir Tambah Buku sedang dalam tahap pengembangan.')">
+                        <span class="text-lg leading-none">+</span>
+                        <span>Tambah Buku</span>
+                    </button>
+                </div>
+
+                <!-- Table Container -->
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                        <h3 class="font-bold text-lg text-slate-900">Semua Buku</h3>
+                        <span class="text-[11px] text-slate-400 font-medium">8 judul &bull; 269 buku tersedia</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                                    <th class="p-4 pl-6">ID Buku</th>
+                                    <th class="p-4">Buku / Penulis</th>
+                                    <th class="p-4">Genre</th>
+                                    <th class="p-4">Harga</th>
+                                    <th class="p-4">Stok</th>
+                                    <th class="p-4">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-books-tbody" class="text-sm">
+                                <!-- Diisi oleh JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="p-4 border-t border-slate-100 flex justify-between items-center text-[11px] text-slate-400">
+                        <span>Menampilkan 1-8 dari 8 buku</span>
+                        <div class="flex items-center space-x-2">
+                            <button class="p-1 hover:text-slate-600">&lt;</button>
+                            <button class="w-6 h-6 bg-purple-100 text-purple-600 rounded font-bold">1</button>
+                            <button class="p-1 hover:text-slate-600">&gt;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center pt-8 pb-4 text-[10px] text-slate-400">
+                    Cerita Kita &bull; Ruang pengelola toko
+                </div>
+            </div>
+
+            <!-- Tab Orders -->
+            <div id="admin-content-orders" class="hidden space-y-6">
+                <!-- Header -->
+                <div class="flex justify-between items-end">
+                    <div>
+                        <p class="text-[11px] text-slate-400 mb-2">Admin / Pesanan Masuk</p>
+                        <h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-1">Pesanan masuk</h2>
+                        <p class="text-sm text-slate-500">Pantau pembayaran dan kelola perjalanan buku ke pembaca.</p>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-white px-4 py-2 border border-slate-200 rounded-xl shadow-sm text-sm text-slate-600 font-medium cursor-default">
+                        <svg class="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span>10 Oktober 2026</span>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="flex flex-wrap gap-2" id="admin-orders-filters">
+                    <button onclick="setOrderFilter('Semua')" id="filter-btn-Semua" class="px-5 py-2.5 rounded-full border border-purple-500 text-purple-600 font-bold text-sm bg-purple-50 smooth-transition">Semua <span id="count-Semua" class="text-[11px] font-medium ml-1">0</span></button>
+                    <button onclick="setOrderFilter('Menunggu')" id="filter-btn-Menunggu" class="px-5 py-2.5 rounded-full border border-slate-200 text-slate-600 font-bold text-sm bg-white hover:bg-slate-50 smooth-transition">Menunggu <span id="count-Menunggu" class="text-[11px] font-medium ml-1">0</span></button>
+                    <button onclick="setOrderFilter('Diproses')" id="filter-btn-Diproses" class="px-5 py-2.5 rounded-full border border-slate-200 text-slate-600 font-bold text-sm bg-white hover:bg-slate-50 smooth-transition">Diproses <span id="count-Diproses" class="text-[11px] font-medium ml-1">0</span></button>
+                    <button onclick="setOrderFilter('Dikirim')" id="filter-btn-Dikirim" class="px-5 py-2.5 rounded-full border border-slate-200 text-slate-600 font-bold text-sm bg-white hover:bg-slate-50 smooth-transition">Dikirim <span id="count-Dikirim" class="text-[11px] font-medium ml-1">0</span></button>
+                    <button onclick="setOrderFilter('Selesai')" id="filter-btn-Selesai" class="px-5 py-2.5 rounded-full border border-slate-200 text-slate-600 font-bold text-sm bg-white hover:bg-slate-50 smooth-transition">Selesai <span id="count-Selesai" class="text-[11px] font-medium ml-1">0</span></button>
+                </div>
+
+                <!-- Table Container -->
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                        <h3 class="font-bold text-lg text-slate-900">Daftar Pesanan</h3>
+                        <div class="relative w-72">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            </div>
+                            <input type="text" id="admin-orders-search" onkeyup="renderAdminOrders()" class="w-full bg-slate-50 border border-transparent text-slate-600 rounded-xl pl-10 pr-4 py-2 outline-none focus:ring-2 focus:ring-purple-200 focus:bg-white text-sm smooth-transition" placeholder="Cari pesanan atau pembeli">
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                                    <th class="p-4 pl-6">Pesanan</th>
+                                    <th class="p-4">Pembeli</th>
+                                    <th class="p-4">Buku</th>
+                                    <th class="p-4">Total</th>
+                                    <th class="p-4">Status / Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-orders-tbody" class="text-sm">
+                                <!-- Diisi oleh JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="p-4 border-t border-slate-100 flex justify-between items-center text-[11px] text-slate-400">
+                        <span>Menampilkan 6 pesanan terbaru dari 148 pesanan</span>
+                        <div class="flex items-center space-x-2">
+                            <button class="p-1 hover:text-slate-600">&lt;</button>
+                            <button class="w-6 h-6 text-purple-600 rounded font-bold">1</button>
+                            <button class="w-6 h-6 text-slate-600 hover:text-purple-600 rounded">2</button>
+                            <button class="w-6 h-6 text-slate-600 hover:text-purple-600 rounded">3</button>
+                            <span class="px-1">...</span>
+                            <button class="w-6 h-6 text-slate-600 hover:text-purple-600 rounded">25</button>
+                            <button class="p-1 hover:text-slate-600">&gt;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Banner -->
+                <div class="bg-purple-50 rounded-2xl p-6 flex items-start space-x-4 border border-purple-100">
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-purple-500 shadow-sm flex-shrink-0">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-purple-700 mb-1">Rencana notifikasi pembeli</p>
+                        <p class="text-[11px] text-purple-600/80">Email otomatis direncanakan saat status pesanan diperbarui. Rancangan ini tidak mengirim email atau mengubah pesanan.</p>
+                    </div>
+                </div>
+
+                <div class="text-center pt-8 pb-4 text-[10px] text-slate-400">
+                    Cerita Kita &bull; Ruang pengelola toko
+                </div>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW MODAL -->
+  <div id="review-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeReviewModal()"></div>
+    <div class="relative bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col m-4 shadow-2xl overflow-hidden">
+      <!-- Modal Header -->
+      <div class="p-6 border-b flex justify-between items-center bg-slate-50">
+        <h3 id="modal-book-title" class="text-2xl font-bold text-slate-800">Judul Buku</h3>
+        <button onclick="closeReviewModal()" class="text-slate-400 hover:text-red-500 text-3xl font-bold leading-none">&times;</button>
+      </div>
+      
+      <!-- Modal Body (Reviews List) -->
+      <div id="reviews-list" class="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-100">
+        <!-- Reviews will be generated here -->
+      </div>
+      
+      <!-- Modal Footer (Add Review Form) -->
+      <div class="p-6 border-t bg-white">
+        <h4 class="font-bold text-slate-800 mb-3">Tulis Ulasan Anda</h4>
+        <form id="review-form" class="space-y-3">
+          <input type="hidden" id="review-book-id">
+          <div class="flex gap-2">
+            <input type="text" id="review-name" required placeholder="Nama Anda" class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <select id="review-rating" required class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+              <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+              <option value="4">⭐⭐⭐⭐ (4)</option>
+              <option value="3">⭐⭐⭐ (3)</option>
+              <option value="2">⭐⭐ (2)</option>
+              <option value="1">⭐ (1)</option>
+            </select>
+          </div>
+          <textarea id="review-text" required rows="2" placeholder="Bagaimana pendapat Anda tentang buku ini?" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+          <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white font-bold py-2 rounded-lg hover:from-purple-700 hover:to-pink-600 smooth-transition">Kirim Ulasan</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkout-modal" class="fixed inset-0 z-[120] hidden flex items-center justify-center p-4 md:p-6">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeCheckoutModal()"></div>
+    <div class="relative bg-white rounded-3xl w-full max-w-[1000px] max-h-full flex flex-col shadow-2xl overflow-hidden">
+      
+      <!-- Close Button -->
+      <button onclick="closeCheckoutModal()" class="absolute top-6 right-6 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-700 flex items-center justify-center text-xl font-bold z-10 smooth-transition">&times;</button>
+      
+      <!-- Header -->
+      <div class="p-6 md:px-10 md:pt-10 md:pb-6 border-b border-slate-100">
+        <h3 class="text-3xl font-bold text-slate-900 tracking-tight mb-1">Selesaikan Pesanan Anda</h3>
+        <p class="text-slate-500 text-sm">Tinggal selangkah lagi, cerita baru akan sampai di rumahmu.</p>
+      </div>
+      
+      <!-- Body (Two Columns) -->
+      <div class="flex-1 overflow-y-auto p-6 md:p-10 flex flex-col lg:flex-row gap-8 lg:gap-12">
+        
+        <!-- Left Column: Forms -->
+        <form id="checkout-form" class="w-full lg:w-3/5 space-y-8 flex flex-col">
+            
+            <!-- Alamat Pengiriman -->
+            <div>
+                <h4 class="font-bold text-slate-900 mb-4 flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> Alamat Pengiriman</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1.5">Nama Penerima</label>
+                        <input type="text" id="checkout-name" required class="w-full border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-purple-500 outline-none text-sm smooth-transition" placeholder="Nadia Putri">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1.5">Nomor HP</label>
+                        <input type="text" id="checkout-phone" required class="w-full border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-purple-500 outline-none text-sm smooth-transition" placeholder="0812 3456 7890">
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-[11px] font-bold text-slate-700 mb-1.5">Alamat Lengkap</label>
+                    <textarea id="checkout-address" required rows="2" class="w-full border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-purple-500 outline-none text-sm smooth-transition" placeholder="Jl. Melati No. 18, RT 03/RW 05..."></textarea>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1.5">Kota / Kabupaten</label>
+                        <input type="text" id="checkout-city" required class="w-full border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-purple-500 outline-none text-sm smooth-transition" placeholder="Kota Bandung">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1.5">Kode Pos</label>
+                        <input type="text" id="checkout-zip" required class="w-full border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-purple-500 outline-none text-sm smooth-transition" placeholder="40123">
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1.5">Provinsi</label>
+                        <input type="text" id="checkout-province" required class="w-full border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-purple-500 outline-none text-sm smooth-transition" placeholder="Jawa Barat">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1.5">Email</label>
+                        <input type="email" id="checkout-email" required class="w-full border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-purple-500 outline-none text-sm smooth-transition" placeholder="nadia.putri@email.com">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Metode Pengiriman -->
+            <div>
+                <h4 class="font-bold text-slate-900 mb-4 text-sm">Metode Pengiriman</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <label class="border border-purple-200 bg-purple-50 p-4 rounded-xl flex flex-col cursor-pointer relative smooth-transition">
+                        <div class="flex items-center mb-1">
+                            <input type="radio" name="shipping" value="15000" class="mr-2 text-purple-600 focus:ring-purple-500 w-3 h-3" required checked onchange="updateCheckoutTotal()">
+                            <span class="font-bold text-xs text-slate-900">Reguler</span>
+                        </div>
+                        <span class="font-bold text-sm text-slate-800 ml-5">Rp15.000</span>
+                        <span class="text-[10px] text-slate-500 ml-5 mt-0.5">2-4 hari</span>
+                    </label>
+                    <label class="border border-slate-200 p-4 rounded-xl flex flex-col cursor-pointer hover:border-purple-300 transition-colors">
+                        <div class="flex items-center mb-1">
+                            <input type="radio" name="shipping" value="25000" class="mr-2 text-purple-600 focus:ring-purple-500 w-3 h-3" onchange="updateCheckoutTotal()">
+                            <span class="font-bold text-xs text-slate-900">Ekspres</span>
+                        </div>
+                        <span class="font-bold text-sm text-slate-800 ml-5">Rp25.000</span>
+                        <span class="text-[10px] text-slate-500 ml-5 mt-0.5">1-2 hari</span>
+                    </label>
+                    <label class="border border-slate-200 p-4 rounded-xl flex flex-col cursor-pointer hover:border-purple-300 transition-colors">
+                        <div class="flex items-center mb-1">
+                            <input type="radio" name="shipping" value="35000" class="mr-2 text-purple-600 focus:ring-purple-500 w-3 h-3" onchange="updateCheckoutTotal()">
+                            <span class="font-bold text-xs text-slate-900">Kargo</span>
+                        </div>
+                        <span class="font-bold text-sm text-slate-800 ml-5">Rp35.000</span>
+                        <span class="text-[10px] text-slate-500 ml-5 mt-0.5">4-7 hari</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Metode Pembayaran -->
+            <div>
+                <h4 class="font-bold text-slate-900 mb-4 text-sm">Metode Pembayaran</h4>
+                <div class="relative">
+                    <select id="checkout-payment" required class="w-full border border-purple-200 bg-white rounded-xl p-3.5 focus:ring-2 focus:ring-purple-500 outline-none text-sm font-medium text-slate-800 appearance-none">
+                        <option value="e-Wallet">e-Wallet</option>
+                        <option value="Kartu Kredit">Kartu Kredit</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-purple-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-purple-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    </div>
+                    <style>
+                        #checkout-payment { padding-left: 2.5rem; }
+                    </style>
+                </div>
+            </div>
+            
+        </form>
+        
+        <!-- Right Column: Ringkasan Pesanan -->
+        <div class="w-full lg:w-2/5 flex flex-col">
+            <div class="bg-slate-50 rounded-2xl p-6 md:p-8 flex-1 flex flex-col border border-slate-100">
+                <h4 class="font-bold text-slate-900 mb-6 text-lg tracking-tight">Ringkasan Pesanan</h4>
+                
+                <!-- Items list -->
+                <div id="checkout-items-list" class="space-y-4 mb-8">
+                    <!-- Injected by JS -->
+                </div>
+                
+                <hr class="border-slate-200 mb-6">
+                
+                <!-- Costs -->
+                <div class="space-y-3 mb-6 text-sm">
+                    <div class="flex justify-between text-slate-500">
+                        <span>Subtotal buku</span>
+                        <span id="checkout-subtotal" class="font-bold text-slate-800">Rp0</span>
+                    </div>
+                    <div class="flex justify-between text-pink-500 hidden" id="checkout-discount-row">
+                        <span id="checkout-discount-label">Diskon</span>
+                        <span id="checkout-discount" class="font-bold">-Rp0</span>
+                    </div>
+                    <div class="flex justify-between text-slate-500">
+                        <span>Total belanja</span>
+                        <span id="checkout-total-belanja" class="font-bold text-slate-800">Rp0</span>
+                    </div>
+                    <div class="flex justify-between text-slate-500">
+                        <span>Ongkir Reguler</span>
+                        <span id="checkout-shipping" class="font-bold text-slate-800">Rp15.000</span>
+                    </div>
+                </div>
+                
+                <!-- Promo badge (if applied) -->
+                <div id="checkout-promo-badge" class="mb-6 hidden">
+                    <span class="inline-flex items-center text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100"><svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg> <span id="checkout-promo-badge-text">Promo</span></span>
+                </div>
+                
+                <!-- Total -->
+                <div class="mt-auto pt-6 border-t border-slate-200">
+                    <p class="text-xs font-bold text-slate-800 mb-1">Total Pembayaran</p>
+                    <p id="checkout-final-total" class="text-4xl font-extrabold text-slate-900 tracking-tight mb-6">Rp0</p>
+                    
+                    <button form="checkout-form" type="submit" class="w-full bg-[#10b981] hover:bg-[#059669] text-white font-bold py-4 rounded-xl text-base smooth-transition shadow-lg shadow-emerald-500/30 hover:shadow-xl flex items-center justify-center space-x-2">
+                        <span>Bayar Sekarang</span>
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                    
+                    <div class="mt-6 flex items-start space-x-2 text-slate-400 text-[10px] leading-tight">
+                        <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        <div>
+                            <span class="font-bold block mb-0.5 text-slate-500">Rencana pembayaran via Midtrans</span>
+                            Pada layanan aktif, kamu akan diarahkan ke Midtrans untuk menyelesaikan pembayaran. Tampilan ini adalah rancangan, bukan gateway pembayaran.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOK DETAIL MODAL -->
+  <div id="book-detail-modal" class="fixed inset-0 z-[110] hidden flex items-center justify-center">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeBookDetail()"></div>
+    <div class="relative bg-white rounded-2xl w-full max-w-4xl max-h-[95vh] flex flex-col m-4 shadow-2xl overflow-hidden">
+      <!-- Close Button -->
+      <button onclick="closeBookDetail()" class="absolute top-4 right-4 bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-xl font-bold z-10 smooth-transition">&times;</button>
+      
+      <!-- Content -->
+      <div class="flex-1 overflow-y-auto flex flex-col md:flex-row p-6 md:p-10 gap-8">
+        <!-- Image & Rating Section (Left) -->
+        <div class="w-full md:w-1/3 flex flex-col items-center mt-4 md:mt-0">
+            <img id="detail-cover" src="" alt="" class="w-full max-w-[260px] shadow-lg rounded-md mb-6 transform hover:scale-105 smooth-transition">
+            
+            <div class="flex flex-col items-center space-y-3 w-full max-w-[260px]">
+                <div class="text-sm font-medium text-slate-600">
+                    <span class="text-yellow-400 mr-1">⭐</span> <span id="detail-rating" class="font-bold text-slate-800">4.9</span> <span class="text-slate-400 font-normal ml-1"><span id="detail-reviews-count">128</span> ulasan pembaca</span>
+                </div>
+                <div class="text-xs font-medium text-emerald-600 flex items-center justify-center">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>Tersedia • <span id="detail-stock">42</span> buku</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Info Section (Right) -->
+        <div class="w-full md:w-2/3 flex flex-col pt-2">
+            <div class="mb-4">
+                <span id="detail-genre" class="px-4 py-1.5 bg-purple-50 text-purple-600 text-xs font-bold rounded-full">Romance</span>
+            </div>
+            
+            <h2 id="detail-title" class="text-3xl md:text-4xl font-bold text-slate-900 mb-2 leading-tight tracking-tight">Di Antara Dua Senja</h2>
+            <p class="text-slate-500 mb-4 text-base">oleh <span id="detail-author">Nara Aksara</span></p>
+            
+            <div class="mb-8">
+                <span id="detail-price" class="text-4xl md:text-5xl font-bold text-[#d946ef] tracking-tight">Rp89.000</span>
+            </div>
+            
+            <h4 class="font-bold text-slate-900 mb-3 text-sm">Sinopsis</h4>
+            <p id="detail-synopsis" class="text-slate-600 mb-8 leading-relaxed text-sm text-justify">Bagai Aruna, senja adalah waktu untuk mengingat...</p>
+            
+            <!-- Specs Table -->
+            <div class="bg-slate-50 p-5 rounded-xl text-xs md:text-sm text-slate-500 mb-8 flex flex-col space-y-3">
+                <div class="flex justify-between items-center">
+                    <span>Penerbit</span>
+                    <span id="detail-publisher" class="font-bold text-slate-800 text-right">Aksara Hati</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span>ISBN</span>
+                    <span id="detail-isbn" class="font-bold text-slate-800 text-right">978-623-8910-01-8</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span>Jumlah Halaman</span>
+                    <span id="detail-pages" class="font-bold text-slate-800 text-right">288 halaman</span>
+                </div>
+            </div>
+            
+            <!-- Bottom Actions -->
+            <div class="flex gap-4 mt-auto w-full">
+                <button id="detail-buy-btn" class="flex-1 bg-[#10b981] hover:bg-[#059669] text-white py-3.5 md:py-4 rounded-xl font-bold text-sm md:text-base smooth-transition flex items-center justify-center space-x-2 shadow-sm hover:shadow-md transform hover:-translate-y-0.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span>Beli Sekarang</span>
+                </button>
+                <button id="detail-wishlist-btn" class="px-6 md:px-8 rounded-xl border border-purple-200 text-purple-600 hover:bg-purple-50 hover:border-purple-300 smooth-transition flex items-center justify-center space-x-2 font-medium text-sm md:text-base shadow-sm" title="Tambah ke Wishlist">
+                    <span class="text-lg">♡</span>
+                    <span class="hidden sm:inline">Wishlist</span>
+                </button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USER PROFILE / DASHBOARD OVERLAY -->
+  <div id="profile-modal" class="fixed inset-0 z-[140] hidden bg-slate-50 flex flex-col overflow-y-auto">
+    <!-- Header Replication -->
+    <header class="bg-white border-b border-slate-100 shadow-sm sticky top-0 z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <!-- Left: Logo -->
+        <div class="flex items-center space-x-2 cursor-pointer" onclick="closeProfileModal()">
+          <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center shadow-sm">
+            <span class="text-white text-xs">📖</span>
+          </div>
+          <h1 class="text-xl font-bold tracking-tight text-slate-900">cerita kita</h1>
+        </div>
+        <!-- Center: Search (Dummy) -->
+        <div class="hidden md:flex flex-1 max-w-xl mx-8 relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </div>
+          <input type="text" disabled class="w-full bg-slate-50 text-slate-600 border-none rounded-xl pl-10 pr-4 py-2.5 outline-none text-sm cursor-default" placeholder="Cari judul, penulis, atau cerita favoritmu">
+          <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+            <span class="text-xs font-bold text-slate-400">⌘ K</span>
+          </div>
+        </div>
+        <!-- Right: User -->
+        <div class="flex items-center space-x-6">
+          <button class="relative text-slate-500 hover:text-purple-600 smooth-transition" onclick="closeProfileModal()">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+          </button>
+          <button onclick="closeProfileModal()" class="font-bold text-purple-600 text-sm hover:text-purple-700">Profil Saya</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <!-- Breadcrumb & Header -->
+      <div class="mb-8">
+        <p class="text-[11px] font-medium text-slate-400 mb-4 uppercase tracking-wider">Beranda / Profil Saya</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-2">Halo, <span id="profile-name-first">Nadia</span>. Selamat membaca!</h2>
+        <p class="text-sm text-slate-500">Semua cerita dan perjalanan pesananmu, dalam satu tempat.</p>
+      </div>
+      
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Sidebar Info -->
+        <div class="w-full md:w-[280px] flex-shrink-0">
+          <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 flex flex-col items-center">
+            <div class="w-24 h-24 bg-slate-200 rounded-full mb-4 overflow-hidden shadow-inner border border-slate-100 flex items-center justify-center">
+               <span class="text-4xl">👩🏻‍💼</span>
+            </div>
+            <h4 id="profile-name" class="font-bold text-lg text-slate-900 mb-1">Nadia Putri</h4>
+            <p id="profile-email" class="text-[11px] text-slate-400 mb-4">nadia.putri@email.com</p>
+            <span id="profile-role" class="bg-purple-50 text-purple-600 text-[10px] font-bold px-3 py-1.5 rounded-full mb-6">Role: User</span>
+            
+            <button id="profile-admin-btn" onclick="openAdminModal()" class="w-full bg-slate-900 text-white hover:bg-slate-800 py-2.5 rounded-xl text-sm font-bold smooth-transition hidden mb-3">Admin Portal</button>
+            
+            <div class="w-full h-px bg-slate-100 mb-4"></div>
+            
+            <div class="w-full flex flex-col space-y-1 mb-8">
+              <button class="flex items-center space-x-3 text-purple-600 font-bold text-sm w-full py-2.5 px-3 bg-purple-50 rounded-xl">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                  <span>Riwayat Pesanan</span>
+              </button>
+              <button class="flex items-center space-x-3 text-slate-500 font-medium text-sm w-full py-2.5 px-3 hover:bg-slate-50 hover:text-slate-700 rounded-xl smooth-transition">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                  <span>Wishlist</span>
+              </button>
+              <button class="flex items-center space-x-3 text-slate-500 font-medium text-sm w-full py-2.5 px-3 hover:bg-slate-50 hover:text-slate-700 rounded-xl smooth-transition">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                  <span>Alamat Saya</span>
+              </button>
+            </div>
+            
+            <button onclick="logout()" class="w-full bg-[#ef4444] hover:bg-[#dc2626] text-white py-3.5 rounded-xl text-sm font-bold smooth-transition flex items-center justify-center space-x-2 shadow-sm shadow-red-500/20">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+              <span>Keluar Akun</span>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Main Content (Orders) -->
+        <div class="flex-1 flex flex-col">
+          <div class="flex justify-between items-end mb-6 border-b border-slate-200 pb-4">
+              <h3 class="font-bold text-xl text-slate-900 tracking-tight">Riwayat Pesanan</h3>
+              <span id="orders-count-label" class="text-[11px] text-slate-400 font-medium">0 pesanan</span>
+          </div>
+          <div id="orders-list" class="space-y-4 pb-12">
+            <p class="text-slate-500 text-center py-4 text-sm">Memuat riwayat pesanan...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTH MODAL -->
+  <div id="auth-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeAuthModal()"></div>
+    <div class="relative bg-white rounded-3xl w-full max-w-[480px] shadow-2xl flex flex-col overflow-hidden">
+      
+      <!-- Top Bar: Logo & Close -->
+      <div class="flex justify-between items-center p-6 pb-2">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center shadow-sm">
+            <span class="text-white text-xs">📖</span>
+          </div>
+          <h4 class="text-xl font-bold tracking-tight text-slate-900">cerita kita</h4>
+        </div>
+        <button onclick="closeAuthModal()" class="w-8 h-8 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-400 hover:text-slate-600 flex items-center justify-center text-xl font-bold smooth-transition">&times;</button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex border-b border-slate-100 text-center font-bold text-sm mx-6 mt-4">
+        <button id="tab-login" onclick="switchAuthTab('login')" class="flex-1 pb-3 text-purple-600 border-b-2 border-purple-600">Masuk</button>
+        <button id="tab-register" onclick="switchAuthTab('register')" class="flex-1 pb-3 text-slate-400 hover:text-slate-600 border-b-2 border-transparent smooth-transition">Daftar</button>
+      </div>
+      
+      <!-- Login Form -->
+      <div id="form-login" class="px-8 pt-8 pb-10">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2 tracking-tight">Selamat datang kembali.</h2>
+        <p class="text-sm text-slate-500 mb-8">Masuk dan lanjutkan cerita yang kamu suka.</p>
+        
+        <form class="space-y-5" onsubmit="handleAuth(event, 'login')">
+          <div>
+            <label class="block text-xs font-bold text-slate-800 mb-2">Email</label>
+            <input type="email" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm placeholder-slate-400 smooth-transition" placeholder="nadia.putri@email.com">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-800 mb-2">Password</label>
+            <input type="password" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm placeholder-slate-400 smooth-transition" placeholder="••••••••••••">
+          </div>
+          
+          <div class="flex justify-between items-center mt-2">
+            <label class="flex items-center text-xs text-slate-500 cursor-pointer">
+              <input type="checkbox" class="mr-2 border-slate-300 rounded text-purple-600 focus:ring-purple-500">
+              Ingat saya
+            </label>
+            <a href="#" class="text-xs font-bold text-purple-600 hover:text-purple-700">Lupa password?</a>
+          </div>
+          
+          <button type="submit" class="w-full bg-[#c042cf] hover:bg-[#a635b5] text-white font-bold py-3.5 rounded-xl shadow-lg shadow-purple-500/30 hover:shadow-xl transform hover:-translate-y-0.5 smooth-transition mt-2">Login</button>
+        </form>
+        
+        <div class="mt-8 text-center text-[11px] text-slate-500">
+          Belum punya akun? <a href="#" onclick="switchAuthTab('register')" class="font-bold text-slate-700 hover:text-purple-600">Daftar dan temukan cerita barumu.</a>
+        </div>
+      </div>
+      
+      <!-- Register Form -->
+      <div id="form-register" class="px-8 pt-8 pb-10 hidden">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2 tracking-tight">Cerita baru dimulai di sini.</h2>
+        <p class="text-sm text-slate-500 mb-8">Buat akun untuk menyimpan buku dan melacak pesananmu.</p>
+        
+        <form class="space-y-5" onsubmit="handleAuth(event, 'register')">
+          <div>
+            <label class="block text-xs font-bold text-slate-800 mb-2">Nama Lengkap</label>
+            <input type="text" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm placeholder-slate-400 smooth-transition" placeholder="Nadia Putri">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-800 mb-2">Email</label>
+            <input type="email" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm placeholder-slate-400 smooth-transition" placeholder="nadia.putri@email.com">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-800 mb-2">Password</label>
+            <input type="password" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm placeholder-slate-400 smooth-transition" placeholder="••••••••••••">
+            <p class="text-[10px] text-slate-500 mt-2">Gunakan minimal 8 karakter, huruf dan angka.</p>
+          </div>
+          <button type="submit" class="w-full bg-[#c042cf] hover:bg-[#a635b5] text-white font-bold py-3.5 rounded-xl shadow-lg shadow-purple-500/30 hover:shadow-xl transform hover:-translate-y-0.5 smooth-transition mt-2">Daftar Sekarang</button>
+        </form>
+        
+        <div class="mt-8 text-center text-[10px] text-slate-500 leading-relaxed">
+          Dengan mendaftar, kamu menyetujui Syarat & Ketentuan serta Kebijakan Privasi Cerita Kita.
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="footer-section" class="bg-[#1e1b4b] text-white py-10 mt-12">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+     <!-- Left: Logo & Copyright -->
+     <div class="flex flex-col items-center md:items-start mb-6 md:mb-0">
+       <div class="flex items-center space-x-3 mb-2">
+         <div class="w-8 h-8 bg-purple-600 rounded-xl flex items-center justify-center">
+           <span class="text-white text-sm">📖</span>
+         </div>
+         <h4 class="text-xl font-bold tracking-tight">cerita kita</h4>
+       </div>
+       <p class="text-slate-400 text-sm">© 2026 Cerita Kita. Setiap cerita berarti.</p>
+     </div>
+     
+     <!-- Right: Links -->
+     <div class="flex space-x-8 text-sm font-medium text-slate-300">
+       <a href="#" class="hover:text-white smooth-transition">Tentang</a>
+       <a href="#" class="hover:text-white smooth-transition">Kontak</a>
+       <a href="#" class="hover:text-white smooth-transition">Lokasi</a>
+     </div>
+   </div>
+  </footer>
+  <!-- Midtrans Snap Script -->
+  <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-A2wSjY-F0Xb13C0f"></script>
+  <script src="script.js"></script>
+ </body>
+</html>
